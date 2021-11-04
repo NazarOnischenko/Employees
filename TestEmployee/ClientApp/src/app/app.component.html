@@ -1,0 +1,93 @@
+<div id="container" class="container">
+  <p>List of Employees</p>
+  <div class="row">
+
+    <div class="col">
+      <div class="btns">
+        <button type="button" class="btn btn-outline-dark" (click)="newEmployee()">Add</button>
+        <button type="button" class="btn btn-outline-dark" (click)="editEmployee()">Edit</button>
+        <button type="button" class="btn btn-outline-dark" (click)="delete()">Delete</button>
+      </div>
+      <div class="c1">
+        <div class="item" tabindex="-1" *ngFor="let item of employees; let i = index" (click)="choose(i)">
+          {{item.firstname}} {{item.lastname}}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-8">
+      <p>Employee Details</p>
+      <div class="c2">
+        <div class="wrapper-details">
+          <div *ngIf="condition">
+            <div>First Name:&nbsp;{{employee.firstname}}</div>
+            <div>Last Name:&nbsp;{{employee.lastname}}</div>
+            <div>Gender:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{employee.gender}}</div>
+            <div>City:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{employee.city}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="container-new-employee">
+  <p class="new-employee">New Employee</p>
+  <div class="pop-up-form">
+
+    <div class="input">
+      <label for="firstname">First Name</label>
+      <input id="firstname" type="text" placeholder="Text Input" [(ngModel)]="createdEmployee.firstname" />
+    </div>
+    <div class="input">
+      <label for="lastname">Last Name</label>
+      <input id="lastname" type="text" placeholder="Text Input" [(ngModel)]="createdEmployee.lastname" />
+    </div>
+    <div class="input">
+      <label for="gender">Gender</label>
+      <input id="gender" type="text" list="genders" placeholder="Drop Down (Male, Female)" [(ngModel)]="createdEmployee.gender" />
+      <datalist id="genders">
+        <option>Male</option>
+        <option>Female</option>
+      </datalist>
+    </div>
+    <div class="input">
+      <label for="city">City</label>
+      <input id="city" type="text" placeholder="City" [(ngModel)]="createdEmployee.city" />
+    </div>
+    <div class="input-btns">
+      <button type="button" class="btn btn-outline-dark" (click)="save()">Save</button>
+      <button type="button" class="btn btn-outline-dark" (click)="cancelNewEmployee()">Cancel</button>
+    </div>
+  </div>
+  </div>
+  <div id="container-update-employee">
+    <p class="update-employee">Update Employee</p>
+    <div class="pop-up-form-update">
+
+      <div class="input">
+        <label for="firstname">First Name</label>
+        <input id="firstname" type="text" placeholder="Text Input" [(ngModel)]="employee.firstname" />
+      </div>
+      <div class="input">
+        <label for="lastname">Last Name</label>
+        <input id="lastname" type="text" placeholder="Text Input" [(ngModel)]="employee.lastname" />
+      </div>
+      <div class="input">
+        <label for="gender">Gender</label>
+        <input id="gender" type="text" list="genders" placeholder="Drop Down (Male, Female)" [(ngModel)]="employee.gender" />
+        <datalist id="genders">
+          <option>Male</option>
+          <option>Female</option>
+        </datalist>
+      </div>
+      <div class="input">
+        <label for="city">City</label>
+        <input id="city" type="text" placeholder="City" [(ngModel)]="employee.city" />
+      </div>
+      <div class="input-btns">
+        <button type="button" class="btn btn-outline-dark" (click)="save()">Save</button>
+        <button type="button" class="btn btn-outline-dark" (click)="cancelEditEmployee()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
